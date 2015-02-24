@@ -2,4 +2,4 @@
 
 An easy web interface for students to complete practice problems and for administrators to create practice problems.
 
-More details on the goals can be found [here](https://www.youtube.com/watch?v=LdUqu0n-T9o)
+More details on the goals can be found <a href="https://www.youtube.com/watch?v=LdUqu0n-T9o">here</a>
