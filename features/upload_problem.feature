@@ -19,3 +19,4 @@ Scenario: choose tags associated with the new problem
 Scenario: upload practice problem
 	Then I should be able to select a problem file
 	Then I should be able to click upload 
+
