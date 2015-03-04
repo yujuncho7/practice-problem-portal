@@ -13,9 +13,9 @@ Background:
 	And I am on the "Upload Page"
 
 Scenario: choose tags associated with the new problem
-
+	Then I should a list of tags 
+	Then I should be able to select the necessary tags
 
 Scenario: upload practice problem
-
-
-Scenario: 
+	Then I should be able to select a problem file
+	Then I should be able to click upload 
