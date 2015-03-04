@@ -8,9 +8,12 @@ Background:
 
   Given the following practice problems exist:
 
-  #
-  # practice problems preloaded into test DB
-  #
+  | title | tags |  difficulty  | completed? |
+  | 'Baby'  | 'lists', 'strings' | 'average'  | yes |
+  | 'Filter Tree' | 'trees', 'recursion'  | 'average' | no |
+  | 'Contains'  | 'trees', 'recursion'  | 'basic' | yes |
+  | 'Over Nine Thousand'  | 'trees' | 'basic' | no
+  | 'Numbers Within' |  'control', 'recursion' | 'advanced' | no |
 
 
 Scenario: show problem's solutions
@@ -37,16 +40,13 @@ Scenario: hide problem's hints
     And I click the 'Hint' button
   Then I should not see the hints
 
-#
-# fill in with actual DB entry
-#
 
 Scenario: show progress status for each problem
   Given I am on the home page 
-    And I have finished #problem 1
-    But I have not finished #problem 2
-  Then the status for #problem 1 is done 
-    But the status for #problem 2 is not done
+    And I have finished 'Baby'
+    But I have not finished 'Filter Tree'
+  Then the status for 'Baby' is completed 
+    But the status for 'Filter Tree' is not completed
 
 Scenario: all tags are selected
   Given I am on the home page
@@ -58,7 +58,8 @@ Scenario: filter to problems with 'tree' rating
   Given I am on the home page
   When I check the 'tree' rating
     And I press "Refresh"
-  Then I should see #problem with 'tree' rating
-    And I should see #problem with 'tree' rating
-    But I should not see #problem without 'tree' rating
-    But I should not see #problem without 'tree' rating
+  Then I should see 'Filter Tree' 
+    And I should see 'Contains'
+    But I should see 'Over Nine Thousand'
+    But I should not see 'Baby'
+    But I should not see  'Numbers Within'
