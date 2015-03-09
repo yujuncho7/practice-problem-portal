@@ -1,0 +1,22 @@
+<h1>problems: new page</h1>
+
+<%= form_for url: new_problem_path do |p| %>
+  <p>
+    <%= p.label :title %><br>
+    <%= p.text_field :title %>
+  </p>
+
+  <p>
+    <%= p.label :description %><br>
+    <%= p.text_field :description %>
+  </p>
+
+  <p>
+    <%= p.label :category %><br>
+    <%= p.text_field :category %>
+  </p>
+
+  <p>
+    <%= submit_tag 'Create Problem' %>
+  </p>
+<% end %>
