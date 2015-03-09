@@ -3,11 +3,13 @@ Practiceproblemportal::Application.routes.draw do
   resources :students do
     collection do
       get 'login'
+      post 'login', to: 'students#confirm'
     end
   end
-  resources :instructors
-     collection do
+  resources :instructors do
+    collection do
       get 'login'
+      post 'login', to: 'instructors#confirm'
     end
   end
 

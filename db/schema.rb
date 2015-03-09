@@ -11,17 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150308065858) do
+ActiveRecord::Schema.define(:version => 20150308233404) do
 
-  create_table "instructor", :force => true do |t|
+  create_table "instructors", :force => true do |t|
     t.string "email"
     t.string "hashed_password"
   end
 
-  create_table "student", :force => true do |t|
+  create_table "students", :force => true do |t|
+    t.string "cs_account"
     t.string "email"
     t.string "hashed_password"
-    t.string "cs_account"
   end
 
 end
