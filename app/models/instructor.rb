@@ -1,6 +1,7 @@
 require 'bcrypt'
 
 class Instructor < ActiveRecord::Base
+  attr_accessible :email, :hashed_password, :password, :password_confirmation
 
   include BCrypt
 

@@ -1,0 +1,7 @@
+<h1>Login</h1>
+
+<%= form_for :user, url: '/students' do |f| %>
+  CS Account: <%= f.text_field :cs_account %>
+  Password: <%= f.password_field :password %>
+  <%= f.submit "Login" %>
+<% end %>
