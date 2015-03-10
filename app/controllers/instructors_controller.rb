@@ -8,7 +8,6 @@ class InstructorsController < ApplicationController
   end
 
   def show
-    flash[:notice] = 'successful'
   end
 
   def create
@@ -24,11 +23,9 @@ class InstructorsController < ApplicationController
     if @user.password == params[:password]
       redirect_to instructor_path(@user)
     else
-      flash[:notice] = "test"
       redirect_to new_instructor_path
     end
   end
-
 
   def login
   end

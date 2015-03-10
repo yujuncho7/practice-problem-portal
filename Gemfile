@@ -8,6 +8,9 @@ gem 'cucumber-rails', :require => false
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
+  gem 'therubyracer'
+  gem 'less-rails'
+  gem 'twitter-bootstrap-rails'
   gem 'sqlite3'
   gem 'ruby-debug19'
   gem 'rspec-rails', '~>2.14.0'
