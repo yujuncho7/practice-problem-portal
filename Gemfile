@@ -16,6 +16,10 @@ group :development, :test do
   gem 'rspec-rails', '~>2.14.0'
   gem 'simplecov'
   gem 'bcrypt', '~> 3.1.7'
+
+  # Debugging Tools recommended by Sam
+  # gem 'better_errors'
+  # gem 'pry-byebug'
 end
 
 # Gems used only for assets and not required
