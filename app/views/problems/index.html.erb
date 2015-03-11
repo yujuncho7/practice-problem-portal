@@ -1,21 +1,22 @@
 <h1>Practice Problems</h1>
 
+<html>
+    <body>
+        <h1>Practice Problems</h1>
+        <table border="1">
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Difficulty</th>
+            </tr>
+            <% @problems.each do |problem| %>
+            <tr>
+                <td> <%= link_to "#{problem.title}", problem_path(problem) %> </td>
+                <td> <%= problem.category %> </td>
+                <td> <%= problem.difficulty %> </td>
+            </tr>
+            <% end %>
+        </table>
+    </body>
+</html>
 
-<table>
-	<thead> 
-		<tr> 
-			<th>Title</th>
-			<th>Category</th>
-			<th>Difficulty</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<% @problems.each do |problem| %>
-			<td> <%= link_to "#{problem.title}", problem_path(problem) %> </td>
-			<td> <%= problem.category %> </td>
-			<td> <%= problem.difficulty %> </td>
-			<% end %>	
-		</tr>
-	</tbody>
-</table>
