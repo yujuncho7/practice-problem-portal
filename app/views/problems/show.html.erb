@@ -15,7 +15,7 @@
 	<%= @problem.description %>
 </p>
 
-<%= link_to 'Edit', edit_problem_path(@problem) %> 
-<%= button_to 'Delete', problem_path(@problem), action: "delete", confirm: 'Are you sure?' %>
-<%= link_to 'Back to problem list', problems_path %> 
+<%= link_to 'Edit', edit_problem_path(@problem) %>
+<%= button_to 'Delete', problem_path(@problem), method: :delete, data: { confirm: 'Are you sure you want to delete this problem?' } %>
+<%= link_to 'Back to problem list', problems_path %>
 
