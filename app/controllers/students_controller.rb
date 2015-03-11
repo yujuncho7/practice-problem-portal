@@ -1,29 +1,31 @@
 class StudentsController < ApplicationController
-
-  def new
+  def index
   end
 
-  def index
-    redirect_to login_students_path
+  def new
   end
 
   def show
   end
 
   def create
-    @user = Student.new(params[:user])
+    @user = Student.new(:email => params[:email])
     @user.password = params[:password]
     @user.save!
+    flash[:notice] = "Student Account Successfully Created!"
+    redirect_to login_student_path
+  end
+
+  def confirm
+    @user = Student.find_by_email(params[:email])
+    if @user.password == params[:password]
+      redirect_to student_path(@user)
+    else
+      redirect_to new_student_path
+    end
   end
 
   def login
-    @user = Student.find_by_username(params[:email])
-    if @user.password == params[:password]
-      #this needs to be changed!!!
-      redirect_to instructor_path
-    else
-      #this needs to be changed!!!!
-      redirect_to instructor_path
-    end
   end
+
 end

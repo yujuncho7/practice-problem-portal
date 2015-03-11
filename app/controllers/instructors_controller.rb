@@ -14,7 +14,7 @@ class InstructorsController < ApplicationController
     @user = Instructor.new(:email => params[:email])
     @user.password = params[:password]
     @user.save!
-    flash[:notice] = "Account Successfully Created!"
+    flash[:notice] = "Instructor Account Successfully Created!"
     redirect_to login_instructors_path
   end
 

@@ -1,10 +1,13 @@
-<h1>Sign In</h1>
+<link rel = "stylesheet" type = "text/css" href = "login.css">
 
-<%= form_tag url: '/instructors/login' do %>
-  <%= text_field_tag :email, nil, placeholder: 'Email Address' %>
-  <p>
-  <%= password_field_tag :password, nil, placeholder: 'Password' %>
-  <p>
-  <%= submit_tag "Sign In", :class => 'btn btn-default ', :type => 'submit' %>
-  <P>
+<div id = "wrapper">
+<h1>Login</h1>
+
+
+<%= form_tag '/instructors' do %>
+  <p><%= text_field_tag :email, nil, placeholder: 'Email Address' %> </p>
+  <p><%= password_field_tag :password, nil, placeholder: 'Password' %> </p>
+  <p> <%= check_box_tag(:remember_me) %> Remember Me</p>
+  <%= submit_tag "Submit" %>
 <% end %>
+</div>

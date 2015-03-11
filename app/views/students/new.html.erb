@@ -1,9 +1,13 @@
-<h1>Signup!</h1>
+<link rel = "stylesheet" type = "text/css" href = "login.css">
+<div id = "wrapper">
+<h1>Signup</h1>
 
-<%= form_for :user, url: '/students' do |f| %>
-  CS Account: <%= f.text_field :cs_account %>
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation <%= f.password_field :password_confirmation %>
-  <%= f.submit "Submit" %>
+
+<%= form_tag '/students' do %>
+  <p><%= text_field_tag :email, nil, placeholder: 'Email Address' %> </p>
+  <p><%= password_field_tag :password, nil, placeholder: 'Password' %> </p>
+  <p><%= password_field_tag :password, nil, placeholder: 'Confirm Password' %></p>
+  <%= submit_tag "Submit" %>
 <% end %>
+</div>
+	
