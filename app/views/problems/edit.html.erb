@@ -1,6 +1,7 @@
-<h1>Create new problem</h1>
+<h1>Edit <%= @problem.title %></h1>
 
-<%= form_for :problem, url: problems_path do |p| %>
+
+<%= form_for :problem, url: problem_path(@problem), :method => :put do |p| %>
   <p>
     <%= p.label :title %><br>
     <%= p.text_field :title %>
@@ -18,11 +19,10 @@
 
   <p>
     <%= p.label :description %><br>
-    <%= p.text_area :description %>
+    <%= p.text_field :description %>
   </p>
 
-
   <p>
-    <%= submit_tag 'Create Problem' %>
+    <%= submit_tag 'Update Problem' %>
   </p>
 <% end %>

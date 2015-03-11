@@ -1,0 +1,6 @@
+class AddDifficultyToProblems < ActiveRecord::Migration
+  def change
+    change_table :problems
+    add_column :difficulty, :string
+  end
+end
