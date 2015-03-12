@@ -15,8 +15,12 @@ module NavigationHelpers
 
     #when /^the (RottenPotatoes )?home\s?page$/ then '/movies'
     #when /^the movies page$/ then '/movies'
-    when /^the login page$/ then '/instructors/login'
-    when /^the home page for "(.*)"$/i then ('/instructors/' + Instructor.find_by_email($1).id.to_s) 
+    when /^the instructor login page$/ then '/instructors/login'
+    when /^the instructor home page for "(.*)"$/i then ('/instructors/' + Instructor.find_by_email($1).id.to_s) 
+    when /^the student login page$/  then '/students/login'
+    when /^the student home page for "(.*)"$/i then ('/students/' + Student.find_by_email($1).id.to_s)
+
+    when /^the problem page$/ then problems_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

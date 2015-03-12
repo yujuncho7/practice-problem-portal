@@ -8,12 +8,12 @@ Background:
 
   Given the following practice problems exist:
 
-  | title | tags |  difficulty  | completed? |
-  | 'Baby'  | 'lists', 'strings' | 'average'  | yes |
-  | 'Filter Tree' | 'trees', 'recursion'  | 'average' | no |
-  | 'Contains'  | 'trees', 'recursion'  | 'basic' | yes |
-  | 'Over Nine Thousand'  | 'trees' | 'basic' | no
-  | 'Numbers Within' |  'control', 'recursion' | 'advanced' | no |
+  | title         | category               |  difficulty | description |
+  | 'Baby'        | 'lists', 'strings'     | 'average'   | yes         |
+  | 'Filter Tree' | 'trees', 'recursion'   | 'average'   | no          |
+  | 'Contains'    | 'trees', 'recursion'   | 'basic'     | yes         |
+  | 'Over Nine'   | 'trees'                | 'basic'     | no          |
+  | 'Numbers'     | 'control', 'recursion' | 'advanced'  | no          |
 
 
 Scenario: show problem's solutions
@@ -21,7 +21,7 @@ Scenario: show problem's solutions
     And the 'Toggle' button is unclicked
     And I click the 'Toggle' button
   Then I should see the solutions 
-
+ 
 Scenario: hide problem's solutions
   Given I am on the problem page
     And the 'Toggle' button is clicked

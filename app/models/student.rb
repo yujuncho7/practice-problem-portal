@@ -1,7 +1,8 @@
 require 'bcrypt'
 
 class Student < ActiveRecord::Base
-
+  attr_accessible :email, :hashed_password, :password, :password_confirmation
+  
   include BCrypt
 
   def password
