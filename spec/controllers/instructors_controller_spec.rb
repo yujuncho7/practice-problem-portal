@@ -30,7 +30,7 @@ describe InstructorsController do
     mock_instructor.stub(:id).and_return(1)
     Instructor.stub(:find_by_email).and_return(mock_instructor)
     post :confirm, {:email => 'test', :password => 'test'}
-    response.should redirect_to(login_instructors_path(mock_instructor))
+    response.should redirect_to(instructors_path(mock_instructor))
   end
 
   it "should be possible to create an instructor" do
