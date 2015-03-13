@@ -35,8 +35,8 @@ class ProblemsController < ApplicationController
     @problem = Problem.find params[:id]
     @problem.destroy
     flash[:notice] = "#{@problem.title} was successfully deleted."
-    redirect_to problems_path
-end
+    redirect_to problems_path 
+  end
 
 
 end
