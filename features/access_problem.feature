@@ -8,12 +8,12 @@ Background:
 
   Given the following practice problems exist:
 
-  | title | tags |  difficulty  | completed? |
-  | 'Baby'  | 'lists', 'strings' | 'average'  | yes |
-  | 'Filter Tree' | 'trees', 'recursion'  | 'average' | no |
-  | 'Contains'  | 'trees', 'recursion'  | 'basic' | yes |
-  | 'Over Nine Thousand'  | 'trees' | 'basic' | no
-  | 'Numbers Within' |  'control', 'recursion' | 'advanced' | no |
+  | title                 | tags                    | difficulty | completed? | 
+  | 'Baby'                | 'lists', 'strings'      | 'average'  | yes        |
+  | 'Filter Tree'         | 'trees', 'recursion'    | 'average'  | no         |
+  | 'Contains'            | 'trees', 'recursion'    | 'basic'    | yes        |
+  | 'Over Nine Thousand'  | 'trees'                 | 'basic'    | no         |
+  | 'Numbers Within'      |  'control', 'recursion' | 'advanced' | no         |
 
 
 Scenario: show problem's solutions
@@ -27,19 +27,6 @@ Scenario: hide problem's solutions
     And the 'Toggle' button is clicked
     And I click the 'Toggle' button
   Then I should not see the solutions 
-
-Scenario: show problem's hints
-  Given I am on the problem page
-    And the 'Hint' button is unclicked
-    And I click the 'Hint' button
-  Then I should see the hints
-
-Scenario: hide problem's hints
-  Given I am on the problem page
-    And the 'Hint' button is clicked
-    And I click the 'Hint' button
-  Then I should not see the hints
-
 
 Scenario: show progress status for each problem
   Given I am on the home page 
