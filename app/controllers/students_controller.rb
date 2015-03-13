@@ -1,11 +1,15 @@
 class StudentsController < ApplicationController
+
   def index
+    @students = Student.find :all
   end
 
   def new
   end
 
   def show
+    id = params[:id]
+    @student = Student.find(id)
   end
 
   def create
@@ -31,7 +35,22 @@ class StudentsController < ApplicationController
     end
   end
 
+  def update
+    @student = Student.find params[:id]
+    @student.update_attributes!(params[:student])
+    flash[:notice] = "#{@student.email} was successfully updated."
+    redirect_to student_path(@student)
+  end
+
   def login
+
+  end
+
+  def destroy
+    @student = Student.find params[:id]
+    @student.destroy
+    flash[:notice] = "#{@student.email} was successfully deleted."
+    redirect_to students_path 
   end
 
 end

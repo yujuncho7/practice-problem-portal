@@ -4,10 +4,10 @@
 
 
 <%= form_tag '/students' do %>
-  <p><%= text_field_tag :email, nil, placeholder: 'Email Address' %> </p>
-  <p><%= password_field_tag :password, nil, placeholder: 'Password' %> </p>
-  <p><%= password_field_tag :password, nil, placeholder: 'Confirm Password' %></p>
-  <%= submit_tag "Submit" %>
+  <div><%= text_field_tag :email, nil, placeholder: 'Email Address' %> </div>
+  <div><%= password_field_tag :password, nil, placeholder: 'Password' %> </div>
+  <div><%= password_field_tag :password, nil, placeholder: 'Confirm Password' %></div>
+  <div style="width:80%;margin-left:10%;"><%= submit_tag "Submit" %></div>
 <% end %>
 </div>
 	
