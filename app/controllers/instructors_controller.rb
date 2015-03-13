@@ -1,13 +1,11 @@
 class InstructorsController < ApplicationController
 
   def index
+    @instructors = Instructor.find :all
   end
 
   def new
     flash[:notice] = 'ck'
-  end
-
-  def show
   end
 
   def create
@@ -18,19 +16,39 @@ class InstructorsController < ApplicationController
     redirect_to login_instructors_path
   end
 
+  def show
+    id = params[:id]
+    @instructor = Instructor.find(id)
+    #will render app/views/instructors/show.<extension> by default
+  end
+
+  def update
+    @instructor = Instructor.find params[:id]
+    @instructor.update_attributes!(params[:instructor])
+    flash[:notice] = "#{@instructor.email} was successfully updated."
+    redirect_to instructor_path(@instructor)
+  end
+
+  def destroy
+    @instructor = Instructor.find params[:id]
+    @instructor.destroy
+    flash[:notice] = "#{@instructor.email} was successfully deleted."
+    redirect_to instructors_path
+  end
+
   def confirm
     @user = Instructor.find_by_email(params[:email])
     if @user.nil?
       flash[:notice] = "Incorrect Username / Password Combinaton"
       redirect_to login_instructors_path
-    else  
+    else
       if @user.password == params[:password]
         redirect_to instructor_path(@user)
       else
         flash[:notice] = "Incorrect Username / Password Combinaton"
         redirect_to login_instructors_path
       end
-    end  
+    end
   end
 
   def login

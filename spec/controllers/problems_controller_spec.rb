@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ProblemsController do 
+describe ProblemsController do
 
   it 'should call database to get problems' do
     Problem.should_receive(:find)
@@ -9,7 +9,7 @@ describe ProblemsController do
 
   it "should show problem by id" do
     mock_problem = double('Problem')
-    Problem.should_receive(:find).with('1').and_return(mock)
+    Problem.should_receive(:find).with('1').and_return(mock_problem)
     get :show, {:id => '1'}
   end
 
