@@ -8,6 +8,7 @@ gem 'cucumber-rails', :require => false
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
+  gem 'cucumber-rails', :require => false
   gem 'therubyracer'
   gem 'less-rails'
   gem 'twitter-bootstrap-rails'
@@ -16,6 +17,7 @@ group :development, :test do
   gem 'rspec-rails', '~>2.14.0'
   gem 'simplecov'
   gem 'bcrypt', '~> 3.1.7'
+  gem 'database_cleaner'
 
   # Debugging Tools recommended by Sam
   # gem 'better_errors'

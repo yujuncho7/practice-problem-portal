@@ -21,7 +21,7 @@ Scenario: show problem's solutions
     And the 'Toggle' button is unclicked
     And I click the 'Toggle' button
   Then I should see the solutions 
-
+ 
 Scenario: hide problem's solutions
   Given I am on the problem page
     And the 'Toggle' button is clicked

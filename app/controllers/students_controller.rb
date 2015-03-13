@@ -13,15 +13,21 @@ class StudentsController < ApplicationController
     @user.password = params[:password]
     @user.save!
     flash[:notice] = "Student Account Successfully Created!"
-    redirect_to login_student_path
+    redirect_to login_students_path
   end
 
   def confirm
     @user = Student.find_by_email(params[:email])
-    if @user.password == params[:password]
-      redirect_to student_path(@user)
+    if @user.nil?
+      flash[:notice] = "Incorrect Username / Password Combinaton"
+      redirect_to login_students_path
     else
-      redirect_to new_student_path
+      if @user.password == params[:password]
+        redirect_to student_path(@user)
+      else
+        flash[:notice] = "Incorrect Username / Password Combinaton"
+        redirect_to login_students_path
+      end
     end
   end
 

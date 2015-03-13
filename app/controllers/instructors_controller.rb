@@ -20,11 +20,17 @@ class InstructorsController < ApplicationController
 
   def confirm
     @user = Instructor.find_by_email(params[:email])
-    if @user.password == params[:password]
-      redirect_to instructor_path(@user)
-    else
-      redirect_to new_instructor_path
-    end
+    if @user.nil?
+      flash[:notice] = "Incorrect Username / Password Combinaton"
+      redirect_to login_instructors_path
+    else  
+      if @user.password == params[:password]
+        redirect_to instructor_path(@user)
+      else
+        flash[:notice] = "Incorrect Username / Password Combinaton"
+        redirect_to login_instructors_path
+      end
+    end  
   end
 
   def login
