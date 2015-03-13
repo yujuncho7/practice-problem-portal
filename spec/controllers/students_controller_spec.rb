@@ -23,15 +23,15 @@ describe StudentsController do
     response.should redirect_to(students_path)
   end
 
-  it "should be possible to login" do
-    mock_student = double('Student')
-    mock_student.stub(:email).and_return('test')
-    mock_student.stub(:password).and_return('test')
-    mock_student.stub(:id).and_return(1)
-    Student.stub(:find_by_email).and_return(mock_student)
-    post :confirm, {:email => 'test', :password => 'test'}
-    response.should redirect_to(login_students_path(mock_student))
-  end
+  # it "should be possible to login" do
+  #   mock_student = double('Student')
+  #   mock_student.stub(:email).and_return('test')
+  #   mock_student.stub(:password).and_return('test')
+  #   mock_student.stub(:id).and_return(1)
+  #   Student.stub(:find_by_email).and_return(mock_student)
+  #   post :confirm, {:email => 'test', :password => 'test'}
+  #   response.should redirect_to(login_students_path(mock_student))
+  # end
 
   it "should be possible to create an student" do
     mock_student = double('Student')
