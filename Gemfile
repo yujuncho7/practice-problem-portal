@@ -2,15 +2,19 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 gem 'rails', '3.2.16'
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
+
+group :production do
+  gem 'pg'
+end
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
   gem 'cucumber-rails', :require => false
-  gem 'therubyracer'
-  gem 'less-rails'
-  gem 'twitter-bootstrap-rails'
   gem 'sqlite3'
   gem 'ruby-debug19'
   gem 'rspec-rails', '~>2.14.0'
