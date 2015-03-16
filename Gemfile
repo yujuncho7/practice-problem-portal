@@ -2,20 +2,17 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 gem 'rails', '3.2.16'
+gem 'bcrypt', '~> 3.1.7'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
   gem 'cucumber-rails', :require => false
-  gem 'therubyracer'
-  gem 'less-rails'
-  gem 'twitter-bootstrap-rails'
   gem 'sqlite3'
   gem 'ruby-debug19'
   gem 'rspec-rails', '~>2.14.0'
   gem 'simplecov'
-  gem 'bcrypt', '~> 3.1.7'
   gem 'database_cleaner'
 
   # Debugging Tools recommended by Sam
@@ -23,11 +20,18 @@ group :development, :test do
   # gem 'pry-byebug'
 end
 
+group :production do
+  gem 'pg'
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+  gem 'therubyracer'
+  gem 'less-rails'
+  gem 'twitter-bootstrap-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
