@@ -16,13 +16,12 @@ Background: practice problems have been added to database
   | 'Numbers Within'      |  'control', 'recursion' | 'advanced' | no         |
 
 
-Scenario: sort problems in order increasing difficulty
+Scenario: filter problems based on a single tag
   Given I am on the home page
-  And I press on "Difficulty"
-  Then I should see "Easy" before "Hard"
+  And I enter 'trees' in tags
+  Then I should see 'Filter Tree', 'Contains', 'Over Nine Thousand'
 
-#Assuming Alpha Test and Beta Test are in the database
-Scenario: sort problems alphabetically
+Scenario: filter problems based on no tags
   Given I am on the home page
-  And I press on "Problem"
-  Then I should see "Alpha Test" before "Beta Test"
+  And I enter '' in tags
+  Then I should see ''
