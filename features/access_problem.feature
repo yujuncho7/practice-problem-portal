@@ -16,9 +16,9 @@ Background:
   | 'Numbers Within'      |  'control', 'recursion' | 'advanced' | no         |
 
 
-Scenario: show problem's solutions
+Scenario: Show problem's solutions
   Given I am on the problem page
-  And the 'Toggle' button is unclicked
+  And a 'Toggle' button is unclicked
   And I click the 'Toggle' button
   Then I should see the solutions 
  
