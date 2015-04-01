@@ -5,7 +5,13 @@ class ProblemsController < ApplicationController
   end
 
   def new
-    # default: create new template
+    user = session[:user]
+    if user.is_instructor?
+      # automatically renders view template corresponding to new method
+    else
+      redirect_to problems_path
+      flash[:notice] = "Permission Denied"
+    end
   end
 
   def show
@@ -21,7 +27,13 @@ class ProblemsController < ApplicationController
   end
 
   def edit
-    @problem = Problem.find params[:id]
+    user = session[:user]
+    if user.is_instructor?
+      @problem = Problem.find params[:id]
+    else
+      flash[:notice] = "Permission Denied"
+      redirect_to problems_path
+    end
   end
 
   def update

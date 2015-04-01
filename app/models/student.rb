@@ -5,6 +5,10 @@ class Student < ActiveRecord::Base
   
   include BCrypt
 
+  def is_instructor?
+  	return false
+  end
+
   def password
     @password ||= Password.new(hashed_password)
   end
