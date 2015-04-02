@@ -1,5 +1,5 @@
 <h1>Create new problem</h1>
-
+<%= flash[:notice] %>
 <%= form_for :problem, url: problems_path do |p| %>
   <p>
     <%= p.label :title %><br>

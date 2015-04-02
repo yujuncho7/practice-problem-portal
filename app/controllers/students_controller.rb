@@ -27,6 +27,7 @@ class StudentsController < ApplicationController
       redirect_to login_students_path
     else
       if @user.password == params[:password]
+        session[:user] = @user
         redirect_to student_path(@user)
       else
         flash[:notice] = "Incorrect Username / Password Combinaton"
