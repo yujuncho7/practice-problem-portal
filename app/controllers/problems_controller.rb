@@ -54,5 +54,4 @@ class ProblemsController < ApplicationController
     redirect_to problems_path 
   end
 
-
 end
