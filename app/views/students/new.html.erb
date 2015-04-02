@@ -1,13 +1,14 @@
 <link rel = "stylesheet" type = "text/css" href = "login.css">
-<div id = "wrapper">
-<h1>Signup</h1>
+
+<div class = "login-container">
+<h2>Signup</h2>
 
 
 <%= form_tag '/students' do %>
-  <div><%= text_field_tag :email, nil, placeholder: 'Email Address' %> </div>
-  <div><%= password_field_tag :password, nil, placeholder: 'Password' %> </div>
-  <div><%= password_field_tag :password, nil, placeholder: 'Confirm Password' %></div>
-  <div style="width:80%;margin-left:10%;"><%= submit_tag "Submit" %></div>
+  <div><%= text_field_tag :email, nil, placeholder: 'Email Address', style:"height:25px" %> </div>
+  <div><%= password_field_tag :password, nil, placeholder: 'Password', style:"height:25px" %> </div>
+  <div><%= password_field_tag :password, nil, placeholder: 'Confirm Password', style:"height:25px" %></div>
+  <%= submit_tag "Submit", class: "btn btn-primary" %>
 <% end %>
 </div>
 	

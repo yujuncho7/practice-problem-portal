@@ -11,3 +11,22 @@
  *= require_self
  *= require_tree .
  */
+.login-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2em;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid #e5e5e5;
+  width: 300px;
+  height: 300px;
+  border-radius: 5px;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}

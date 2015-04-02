@@ -1,21 +1,19 @@
-<h1>Details for <%= @problem.title %></h1>
+<div class="container">
+<h2><%= @problem.title %></h2>
 
-<p>
-	<strong>Category: </strong>
-	<%= @problem.category %>
-</p>
+<div id="question-content"
+  <p>
+    <strong>Difficulty: </strong>
+    <%= @problem.difficulty %>
+  </p>
 
-<p>
-	<strong>Difficulty: </strong>
-	<%= @problem.difficulty %>
-</p>
-
-<p>
-	<strong>Description: </strong>
-	<%= @problem.description %>
-</p>
+  <p>
+    <strong>Description: </strong>
+    <%= @problem.description %>
+  </p>
+</div>
 
 <%= link_to 'Edit', edit_problem_path(@problem) %>
 <%= button_to 'Delete', problem_path(@problem), method: :delete, data: { confirm: 'Are you sure you want to delete this problem?' } %>
 <%= link_to 'Back to problem list', problems_path %>
-
+</div>
