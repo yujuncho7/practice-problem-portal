@@ -3,8 +3,8 @@
       <div id = "problem-table">
         <div id = "search-form">
           <%= form_tag '/students/login', class: 'form-inline' do %>
-            <%= text_field_tag :search, nil, placeholder: 'Search Problems'%>
-            <%= submit_tag "Submit", class: "btn btn-primary" %>
+            <%= text_field_tag :search, nil, placeholder: 'Search Problems', class: 'form-control' %>
+            <%= submit_tag "Submit", class: "btn btn-primary btn-xs" %>
           <% end %>
         </div>
         <table class = "table table-striped">
