@@ -15,6 +15,12 @@ Practiceproblemportal::Application.routes.draw do
 
   resources :problems
 
+  resources :application do
+    collection do
+      get 'logout', to: 'application#destroy'
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
