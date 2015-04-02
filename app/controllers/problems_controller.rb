@@ -6,8 +6,10 @@ class ProblemsController < ApplicationController
 
   def new
     user = session[:user]
-    if user.is_instructor?
-      # automatically renders view template corresponding to new method
+    if !user.nil? 
+      if user.is_instructor?
+        # automatically renders view template corresponding to new method
+      end
     else
       redirect_to problems_path
       flash[:notice] = "Permission Denied"
@@ -28,8 +30,10 @@ class ProblemsController < ApplicationController
 
   def edit
     user = session[:user]
-    if user.is_instructor?
-      @problem = Problem.find params[:id]
+    if !user.nil? 
+      if user.is_instructor?
+        @problem = Problem.find params[:id]
+      end
     else
       flash[:notice] = "Permission Denied"
       redirect_to problems_path
