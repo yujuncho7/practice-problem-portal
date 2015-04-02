@@ -2,8 +2,10 @@ require 'bcrypt'
 
 class Student < ActiveRecord::Base
   attr_accessible :email, :hashed_password, :password, :password_confirmation
-  
   include BCrypt
+
+  validates_presence_of :password, :message => "password can't be blank"
+
 
   def is_instructor?
   	return false
