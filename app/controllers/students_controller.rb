@@ -13,9 +13,7 @@ class StudentsController < ApplicationController
   end
 
   def create
-    @user = Student.new(:email => params[:email])
-    @user.password = params[:password]
-    @user.save!
+    Student.create(:email => params[:email], :password => params[:password])
     flash[:notice] = "Student Account Successfully Created!"
     redirect_to login_students_path
   end
@@ -51,7 +49,7 @@ class StudentsController < ApplicationController
     @student = Student.find params[:id]
     @student.destroy
     flash[:notice] = "#{@student.email} was successfully deleted."
-    redirect_to students_path 
+    redirect_to students_path
   end
 
 end

@@ -25,5 +25,12 @@
 
 <br><br>
 
-<%= link_to 'Create a problem', new_problem_path %>
+<% if session[:user].nil? %>
+    <!-- If not logged in, do not display anything for create. -->
+<% else %>
+  <% if session[:user].is_instructor? %>
+    <%= link_to 'Create a problem', new_problem_path %>
+  <% end %>
+<% end %>
+
 

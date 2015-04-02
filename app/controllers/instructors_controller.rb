@@ -9,9 +9,7 @@ class InstructorsController < ApplicationController
   end
 
   def create
-    @user = Instructor.new(:email => params[:email])
-    @user.password = params[:password]
-    @user.save!
+    Instructor.create(:email => params[:email], :password => params[:password])
     flash[:notice] = "Instructor Account Successfully Created!"
     redirect_to login_instructors_path
   end
