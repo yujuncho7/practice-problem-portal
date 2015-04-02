@@ -4,9 +4,9 @@ class Student < ActiveRecord::Base
   attr_accessible :email, :hashed_password, :password, :password_confirmation
   include BCrypt
 
-  validates_presence_of :password, :message => "password can't be blank"
-
-
+  # validates_length_of :password, :minimum => 7, :maximum => 20, :allow_blank => false
+  # validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+  
   def is_instructor?
   	return false
   end
