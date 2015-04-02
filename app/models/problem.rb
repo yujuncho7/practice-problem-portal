@@ -1,5 +1,5 @@
 class Problem < ActiveRecord::Base
-  attr_accessible :title, :category, :difficulty, :description, :solution
+  attr_accessible :problem_number, :title, :category, :difficulty, :description, :solution
 
 
 

@@ -1,23 +1,25 @@
-<h1>Practice Problems</h1>
-
 <html>
     <body>
-        <%= flash[:notice] %>
-        <h1>Practice Problems</h1>
-        <table border="1">
+      <div id = "problem-table">
+        <div id = "search-form">
+          <%= form_tag '/students/login', class: 'form-inline' do %>
+            <%= text_field_tag :search, nil, placeholder: 'Search Problems'%>
+            <%= submit_tag "Submit", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+        <table class = "table table-striped">
             <tr>
-                <th>Title</th>
-                <th>Category</th>
+                <th style="width: 60%">Title</th>
                 <th>Difficulty</th>
             </tr>
             <% @problems.each do |problem| %>
             <tr>
                 <td> <%= link_to "#{problem.title}", problem_path(problem) %> </td>
-                <td> <%= problem.category %> </td>
                 <td> <%= problem.difficulty %> </td>
             </tr>
             <% end %>
         </table>
+      </div>
     </body>
 </html>
 
