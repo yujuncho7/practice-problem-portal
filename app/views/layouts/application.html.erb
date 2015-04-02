@@ -14,7 +14,10 @@
       <% end %>
       <%= menu_group pull: :right do %>
         <%= menu_item "Sign Up", new_student_path %>
-        <%= menu_item "Login", login_students_path %>
+        <%= drop_down "Login" do %>
+          <%= button_to "Instructor Login", login_instructors_path, class: "btn btn-primary btn-block " %>
+          <%= button_to "Student Login", login_students_path, class: "btn btn-success btn-block" %>
+        <% end %>
       <% end %>
     <% end %>
     <%= yield %>
