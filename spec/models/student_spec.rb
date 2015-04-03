@@ -13,6 +13,7 @@ describe Student do
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
   it { should be_valid }
+  it {should_not be_is_instructor }
 
   describe "when password is not present" do
       before { @user.password = @user.password_confirmation = " " }
