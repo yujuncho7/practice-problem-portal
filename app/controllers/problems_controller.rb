@@ -51,7 +51,7 @@ class ProblemsController < ApplicationController
   def destroy
     modelHandler = ModelHandler.new(Problem)
     modelHandler.destroy(params[:id])
-    flash[:notice] = "#{@problem.title} was successfully deleted."
+    flash[:notice] = "Problem was successfully deleted."
     redirect_to problems_path
   end
 

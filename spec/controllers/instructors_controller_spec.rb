@@ -33,18 +33,7 @@ describe InstructorsController do
   #   response.should redirect_to(instructors_path(mock_instructor))
   # end
 
-  it "should be possible to create an instructor" do
-    mock_instructor = double('Instructor')
-    mock_instructor.stub(:email).and_return('test')
-    mock_instructor.stub(:hashed_password).and_return('test')
-    mock_instructor.stub(:id).and_return(1)
-
-    #Instructor.should_receive(:create!).and_return(mock_instructor)
-    post :create, {:instructor => mock_instructor}
-    response.should redirect_to(login_instructors_path) #liz: might be unnecessary?
-
-  end
-
+  
   it "should be possible to update an instructor" do
     mock_instructor = double('Instructor')
     mock_instructor.stub(:update_attributes!)

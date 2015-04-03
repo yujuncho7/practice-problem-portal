@@ -33,18 +33,6 @@ describe StudentsController do
   #   response.should redirect_to(login_students_path(mock_student))
   # end
 
-  it "should be possible to create an student" do
-    mock_student = double('Student')
-    mock_student.stub(:email).and_return('test')
-    mock_student.stub(:hashed_password).and_return('test')
-    mock_student.stub(:id).and_return(1)
-
-    #Student.should_receive(:create!).and_return(mock_student)
-    post :create, {:student => mock_student}
-    response.should redirect_to(login_students_path) #liz: might be unnecessary?
-
-  end
-
   it "should be possible to update an student" do
     mock_student = double('Student')
     mock_student.stub(:update_attributes!)
