@@ -15,4 +15,4 @@ before_script:
 bundler_args: --binstubs=./bundler_stubs
 addons:
   code_climate:
-    repo_token: 1213....
+    repo_token: ywOPuSKFlxbQ3XM5x3hs8rq1fq8Zg2r4l
