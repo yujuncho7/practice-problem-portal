@@ -1,23 +1,27 @@
 <html>
     <body>
       <div id = "problem-table">
-        <div id = "search-form">
-          <%= form_tag '/students/login', class: 'form-inline' do %>
-            <%= text_field_tag :search, nil, placeholder: 'Search Problems', class: 'form-control' %>
-            <%= submit_tag "Submit", class: "btn btn-primary btn-xs" %>
-          <% end %>
-        </div>
-        <table class = "table table-striped">
+          <div class="form-inline" align="right">
+            <%= search_form_for @search do |f| %>
+              <%= f.text_field :title_cont, class: 'form-control input-lg', placeholder: 'Search Problem', id:'search_problems' %>
+              <%= f.submit "Search", class: 'btn btn-default btn-xs' %>
+            <% end %>
+          </div>
+        <table class="table table-striped" id='problems'>
+          <thead>
             <tr>
                 <th style="width: 60%">Title</th>
-                <th>Difficulty</th>
+                <th>"Difficulty"</th>
             </tr>
+          </thead>
+          <tbody>
             <% @problems.each do |problem| %>
             <tr>
                 <td> <%= link_to "#{problem.title}", problem_path(problem) %> </td>
                 <td> <%= problem.difficulty %> </td>
             </tr>
             <% end %>
+          </tbody>
         </table>
       </div>
     </body>

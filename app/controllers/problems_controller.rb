@@ -1,7 +1,8 @@
 class ProblemsController < ApplicationController
 
   def index
-    @problems = Problem.find :all 
+    @search = Problem.search(params[:q])
+    @problems = @search.result
   end
 
   def new
