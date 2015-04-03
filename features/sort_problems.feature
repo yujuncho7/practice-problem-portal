@@ -8,21 +8,28 @@ Background: practice problems have been added to database
   Tabs are named "Problems" "Difficulty"
   Difficulty settings are "Easy" "Medium" "Hard"
   Given the following practice problems exist:
-  | title                 | tags                    | difficulty | completed? | 
-  | 'Baby'                | 'lists', 'strings'      | 'average'  | yes        |
-  | 'Filter Tree'         | 'trees', 'recursion'    | 'average'  | no         |
-  | 'Contains'            | 'trees', 'recursion'    | 'basic'    | yes        |
-  | 'Over Nine Thousand'  | 'trees'                 | 'basic'    | no         |
-  | 'Numbers Within'      |  'control', 'recursion' | 'advanced' | no         |
+  | title         | tags         | difficulty| completed? | 
+  | 'Alpha Test'  | 'strings'    | 'Medium'  | yes        |
+  | 'Beta Test'   | 'recursion'  | 'Hard'    | no         |
+  | 'Gamma Test'  | 'lists'      | 'Easy'    | yes        |
+  | 'Delta Test'  | 'trees'      | 'Easy'    | no         |
 
 
-Scenario: sort problems in order increasing difficulty
+Scenario: sort problems in order of increasing difficulty
   Given I am on the home page
   And I press on "Difficulty"
   Then I should see "Easy" before "Hard"
 
-#Assuming Alpha Test and Beta Test are in the database
 Scenario: sort problems alphabetically
   Given I am on the home page
   And I press on "Problem"
   Then I should see "Alpha Test" before "Beta Test"
+  And I should see "Delta Test" before "Gamma Test"
+
+Scenario: sort problems by difficulty
+  Given I am on the home page
+  And I press on "Difficulty"
+  Then I should see "Gamma Test" before "Beta Test" 
+  And I should see "Beta Test" before "Alpha Test"
+
+

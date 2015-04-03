@@ -20,17 +20,13 @@ class StudentsController < ApplicationController
 
   def confirm
     @user = Student.find_by_email(params[:email])
-    if @user.nil?
-      #flash[:notice] = "Incorrect Username / Password Combinaton"
-      redirect_to login_students_path
-    else
-      if @user.password == params[:password]
+    authenticator = UserAuthenticator.new @user
+    if authenticator.authenticate(params[:password])
         session[:user] = @user
         redirect_to student_path(@user)
-      else
-        #flash[:notice] = "Incorrect Username / Password Combinaton"
-        redirect_to login_students_path
-      end
+    else
+      flash[:notice] = "Incorrect Username / Password Combinaton"
+      redirect_to login_students_path
     end
   end
 
