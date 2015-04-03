@@ -8,7 +8,7 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'ransack'
 gem 'jquery-datatables-rails', github:'rweng/jquery-datatables-rails'
-
+gem 'bcrypt-ruby'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

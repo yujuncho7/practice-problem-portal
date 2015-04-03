@@ -3,8 +3,9 @@ require 'spec_helper'
 describe ProblemsController do
 
   it 'should call database to get problems' do
-    Problem.should_receive(:search)
+    p = Problem.create
     get :index
+    expect(response).to render_template("index")
   end
 
   it "should show problem by id" do
@@ -15,7 +16,7 @@ describe ProblemsController do
 
   it "should be possible to destroy problem" do
     mock_problem = double('Problem')
-    mock_problem.stub(:title)
+    mock_problem.stub('title')
 
     Problem.should_receive(:find).with('1').and_return(mock_problem)
     mock_problem.should_receive(:destroy)
