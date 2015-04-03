@@ -14,6 +14,32 @@ describe ProblemsController do
     get :show, {:id => '1'}
   end
 
+  it "should show new problem template" do
+    test = Instructor.create(email:'test@gmail.com', password:'12345678', password_confirmation:'12345678')
+    session[:user] = test
+    post :new
+    response.should render_template('new')
+  end
+
+  it "should redirect to problem page if not instructor" do
+    post :new
+    response.should redirect_to(problems_path)
+  end
+
+  it "should show edit page if instructor" do
+    test = Instructor.create(id:'1', email:'test@gmail.com', password:'12345678', password_confirmation:'12345678')
+    Problem.create(id:'1', title:'test')
+    session[:user] = test
+    get :edit, { :id => '1' }
+    response.should render_template('edit')
+  end
+
+  it "should not show edit page if not instructor" do
+    get :edit, { :id => '1'}
+    response.should redirect_to(problems_path)
+  end
+
+
   it "should be possible to destroy problem" do
     mock_problem = double('Problem')
     mock_problem.stub('title')

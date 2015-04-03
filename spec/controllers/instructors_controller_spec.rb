@@ -32,7 +32,31 @@ describe InstructorsController do
   #   post :confirm, {:email => 'test', :password => 'test'}
   #   response.should redirect_to(instructors_path(mock_instructor))
   # end
+  it "should show create instructor page" do
+    get :new
+    response.should render_template('new')
+  end
 
+  it "should create instructor if aguments passed" do
+    post :create, {:email => 'test@gmail.com', :password => '12345678', :password_confirmation => '12345678' }
+    response.should redirect_to(login_instructors_path)
+  end
+
+  it "should not create instructor if nothing was passed" do
+    post :create
+    response.should redirect_to(new_instructor_path)
+  end
+
+  it "should not confirm login if incorrect email and password" do
+    post :confirm
+    response.should redirect_to(login_instructors_path)
+  end
+
+  it "should confirm login if correct email and password" do
+    test = Instructor.create(email:'test@gmail.com', password:'12345678', password_confirmation:'12345678')
+    post :confirm, {:email => 'test@gmail.com', :password => '12345678'}
+    response.should redirect_to(instructor_path(test))
+  end
   
   it "should be possible to update an instructor" do
     mock_instructor = double('Instructor')
