@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150402040903) do
+ActiveRecord::Schema.define(:version => 20150403033133) do
 
   create_table "instructors", :force => true do |t|
     t.string "email"
-    t.string "hashed_password"
+    t.string "password_digest"
   end
 
   create_table "problems", :force => true do |t|
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20150402040903) do
   create_table "students", :force => true do |t|
     t.string "cs_account"
     t.string "email"
-    t.string "hashed_password"
+    t.string "password_digest"
   end
 
 end

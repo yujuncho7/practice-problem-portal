@@ -13,15 +13,20 @@ class StudentsController < ApplicationController
   end
 
   def create
-    Student.create(:email => params[:email], :password => params[:password])
-    flash[:notice] = "Student Account Successfully Created!"
-    redirect_to login_students_path
+    student = Student.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation])
+    if student.valid?
+      flash[:notice] = "Student Account Successfully Created!"
+      student.save!
+      redirect_to login_students_path
+    else
+      flash[:notice] = "Invalid Email or Password"
+      redirect_to new_student_path
+    end
   end
 
   def confirm
     @user = Student.find_by_email(params[:email])
-    authenticator = UserAuthenticator.new @user
-    if authenticator.authenticate(params[:password])
+    if @user && @user.authenticate(params[:password])
         session[:user] = @user
         redirect_to student_path(@user)
     else
