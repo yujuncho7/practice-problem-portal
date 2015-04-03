@@ -34,8 +34,7 @@ class InstructorsController < ApplicationController
 
   def confirm
     @user = Instructor.find_by_email(params[:email])
-    authenticator = UserAuthenticator.new @user
-    if authenticator.authenticate(params[:password])
+    if UserAuthenticator.new(@user).authenticate(params[:password])
         session[:user] = @user
         redirect_to instructor_path(@user)
     else
