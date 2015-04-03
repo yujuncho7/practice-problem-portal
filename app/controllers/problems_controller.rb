@@ -42,13 +42,15 @@ class ProblemsController < ApplicationController
   end
 
   def update
-    @problem = ModelHandler.new(Problem).update(params[:id], params[:problem])
+    modelHandler = ModelHandler.new(Problem)
+    @problem = modelHandler.update(params[:id], params[:problem])
     flash[:notice] = "#{@problem.title} was successfully updated."
     redirect_to problem_path(@problem)
   end
 
   def destroy
-    @problem = ModelHandler.new(Problem).destroy(params[:id])
+    modelHandler = ModelHandler.new(Problem)
+    modelHandler.destroy(params[:id])
     flash[:notice] = "#{@problem.title} was successfully deleted."
     redirect_to problems_path
   end

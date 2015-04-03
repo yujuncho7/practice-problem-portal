@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ProblemsController do
 
   it 'should call database to get problems' do
-    Problem.should_receive(:find)
+    Problem.should_receive(:search)
     get :index
   end
 
