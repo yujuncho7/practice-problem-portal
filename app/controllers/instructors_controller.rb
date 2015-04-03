@@ -21,15 +21,13 @@ class InstructorsController < ApplicationController
   end
 
   def update
-    @instructor = Instructor.find params[:id]
-    @instructor.update_attributes!(params[:instructor])
+    @instructor = ModelHandler.new(Instructor).update(params[:id], params[:instructor])
     flash[:notice] = "#{@instructor.email} was successfully updated."
     redirect_to instructor_path(@instructor)
   end
 
   def destroy
-    @instructor = Instructor.find params[:id]
-    @instructor.destroy
+    @instructor = ModelHandler.new(Instructor).destroy(params[:id])
     flash[:notice] = "#{@instructor.email} was successfully deleted."
     redirect_to instructors_path
   end

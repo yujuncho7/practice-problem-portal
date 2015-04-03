@@ -31,8 +31,7 @@ class StudentsController < ApplicationController
   end
 
   def update
-    @student = Student.find params[:id]
-    @student.update_attributes!(params[:student])
+    @student = ModelHandler.new(Student).update(params[:id], params[:student])
     flash[:notice] = "#{@student.email} was successfully updated."
     redirect_to student_path(@student)
   end
@@ -42,8 +41,7 @@ class StudentsController < ApplicationController
   end
 
   def destroy
-    @student = Student.find params[:id]
-    @student.destroy
+    @student = ModelHandler.new(Student).destroy(params[:id])
     flash[:notice] = "#{@student.email} was successfully deleted."
     redirect_to students_path
   end

@@ -7,7 +7,7 @@ class ProblemsController < ApplicationController
 
   def new
     user = session[:user]
-    if !user.nil? 
+    if !user.nil?
       if user.is_instructor?
         # automatically renders view template corresponding to new method
       end
@@ -31,7 +31,7 @@ class ProblemsController < ApplicationController
 
   def edit
     user = session[:user]
-    if !user.nil? 
+    if !user.nil?
       if user.is_instructor?
         @problem = Problem.find params[:id]
       end
@@ -42,17 +42,15 @@ class ProblemsController < ApplicationController
   end
 
   def update
-    @problem = Problem.find params[:id]
-    @problem.update_attributes!(params[:problem])
+    @problem = ModelHandler.new(Problem).update(params[:id], params[:problem])
     flash[:notice] = "#{@problem.title} was successfully updated."
     redirect_to problem_path(@problem)
   end
 
   def destroy
-    @problem = Problem.find params[:id]
-    @problem.destroy
+    @problem = ModelHandler.new(Problem).destroy(params[:id])
     flash[:notice] = "#{@problem.title} was successfully deleted."
-    redirect_to problems_path 
+    redirect_to problems_path
   end
 
 end
