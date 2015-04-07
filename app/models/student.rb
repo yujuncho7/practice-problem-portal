@@ -1,8 +1,9 @@
 
 class Student < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :email, :password, :password_confirmation, :completed_problems
   has_secure_password
   include BCrypt
+  serialize :completed_problems
 
   before_save { |user| user.email = email.downcase }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
