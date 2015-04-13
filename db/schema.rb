@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150413054052) do
+ActiveRecord::Schema.define(:version => 20150413172905) do
 
   create_table "instructors", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20150413054052) do
 
   create_table "students", :force => true do |t|
     t.string   "cs_account"
-    t.text     "completed_problems"
+    t.string   "hashed_password"
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20150413054052) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.text     "completed_problems"
   end
 
   add_index "students", ["confirmation_token"], :name => "index_students_on_confirmation_token", :unique => true
