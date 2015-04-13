@@ -1,26 +1,34 @@
 <div class="container">
-<h2><%= @problem.title %></h2>
-
-<div id="question-content"
-  <p>
-    <strong>Difficulty: </strong>
-    <%= @problem.difficulty %>
-  </p>
-
-  <p>
-    <strong>Description: </strong>
-    <%= @problem.description %>
-  </p>
-</div>
-
-<% if session[:user].nil? %>
-  <!-- If not logged in, do not display anything for edit/delete. -->
-<% else %>
-  <% if session[:user].is_instructor? %>
-    <%= link_to 'Edit', edit_problem_path(@problem) %>
-    <%= button_to 'Delete', problem_path(@problem), method: :delete, data: { confirm: 'Are you sure you want to delete this problem?' } %>
+  <script>
+  $(document).ready(function(){
+      $("#solution").hide();
+      $("button").click(function(){
+        $("#solution").toggle(500);
+      });
+  });
+  </script>
+  <%= link_to problems_path, class: "btn btn-default" do %>
+    <i class="glyphicon glyphicon-menu-left">Back</i>
   <% end %>
-<% end %>
+  <h2><%= @problem.title %></h2>
+  <div id="question-content"
+    <p>
+      <%= @problem.description %>
+    </p>
+  </div>
 
-<%= link_to 'Back to problem list', problems_path %>
+  <% if session[:user].nil? %>
+    <!-- If not logged in, do not display anything for edit/delete. -->
+  <% else %>
+    <% if session[:user].is_instructor? %>
+      <%= button_to 'Edit', edit_problem_path(@problem), class: 'btn btn-warning btn-sm' %>
+      <%= button_to 'Delete', problem_path(@problem), class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: 'Are you sure you want to delete this problem?' } %>
+    <% end %>
+  <% end %>
+
+  <button class="btn btn-info btn-sm">Toggle Solution</button>
+  <div style="background:#E3E3E3">
+    <p id="solution"><%= @problem.solution %></p>
+  </div>
+
 </div>

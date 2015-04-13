@@ -11,7 +11,7 @@
           <thead>
             <tr>
                 <th class="problem-header" style="width: 60%">Title</th>
-                <th class="problem-header">"Difficulty"</th>
+                <th class="problem-header">Difficulty</th>
             </tr>
           </thead>
           <tbody>
@@ -27,12 +27,3 @@
     </body>
 </html>
 
-<br><br>
-
-<% if session[:user].nil? %>
-    <!-- If not logged in, do not display anything for create. -->
-<% else %>
-  <% if session[:user].is_instructor? %>
-    <%= link_to 'Create a problem', new_problem_path %>
-  <% end %>
-<% end %>

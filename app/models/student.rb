@@ -1,17 +1,13 @@
-
 class Student < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation, :completed_problems
-  has_secure_password
-  include BCrypt
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :completed_problems
   serialize :completed_problems
 
-  before_save { |user| user.email = email.downcase }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-  validates :email, presence: true,
-                    length: { maximum: 50 },
-                    format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6, maximum: 20}
   validate :confirm?
 
   def confirm?
