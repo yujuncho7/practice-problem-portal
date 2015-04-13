@@ -10,6 +10,8 @@ gem 'ransack'
 gem 'jquery-datatables-rails', github:'rweng/jquery-datatables-rails'
 gem 'bcrypt-ruby'
 gem "codeclimate-test-reporter", group: :test, require: nil
+gem 'devise'
+gem 'mailcatcher'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

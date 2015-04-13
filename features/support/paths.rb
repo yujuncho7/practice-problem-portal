@@ -17,7 +17,7 @@ module NavigationHelpers
     #when /^the movies page$/ then '/movies'
     when /^the instructor login page$/ then '/instructors/login'
     when /^the instructor home page for "(.*)"$/i then ('/instructors/' + Instructor.find_by_email($1).id.to_s) 
-    when /^the student login page$/  then '/students/login'
+    when /^the student login page$/  then '/students/sign_in'
     when /^the student home page for "(.*)"$/i then ('/students/' + Student.find_by_email($1).id.to_s)
 
     when /^the problem page$/ then problems_path

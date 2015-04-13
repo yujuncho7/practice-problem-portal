@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  def index
+    redirect_to problems_path
+  end
 
   def destroy
   	reset_session

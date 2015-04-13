@@ -1,17 +1,12 @@
 Practiceproblemportal::Application.routes.draw do
 
-  resources :students do
-    collection do
-      get 'login'
-      post 'login', to: 'students#confirm'
-    end
-  end
-  resources :instructors do
-    collection do
-      get 'login'
-      post 'login', to: 'instructors#confirm'
-    end
-  end
+  devise_for :instructors, controllers: {
+    sessions: "instructors/sessions"
+  }, path: "instructors", path_names: { sign_up: 'sign_up_only' }
+
+  devise_for :students, controllers: {
+      sessions: "students/sessions"
+  }
 
   resources :problems
 
@@ -77,4 +72,5 @@ Practiceproblemportal::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+  root :to => 'problems#index'
 end

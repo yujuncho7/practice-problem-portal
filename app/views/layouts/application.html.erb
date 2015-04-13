@@ -11,24 +11,36 @@
 <body>
     <%= nav_bar fixed: :top do %>
       <%= menu_group do %>
-        <%= menu_item "CS61A Pratice Portal" %>
+        <%= menu_item "CS61A Pratice Portal", root_path %>
         <%= menu_item "Problems", problems_path %>
+        <% if instructor_signed_in? %>
+          <%= menu_item "Create Problem", new_problem_path %>
+        <% end %>
       <% end %>
       <%= menu_group pull: :right do %>
 
-        <% if session[:user].nil? %>
-          <%= menu_item "Sign Up", new_student_path %>
+        <% if !student_signed_in? and !instructor_signed_in? %>
+          <%= menu_item "Sign Up", new_student_registration_path %>
           <%= drop_down "Login" do %>
-            <%= button_to "Instructor Login", login_instructors_path, class: "btn btn-primary btn-block " %>
-            <%= button_to "Student Login", login_students_path, class: "btn btn-success btn-block" %>
+            <%= link_to "Instructor Login", new_instructor_session_path, class: "btn btn-primary btn-block " %>
+            <%= link_to "Student Login", new_student_session_path, class: "btn btn-success btn-block" %>
           <% end %>
         <% else %>
-          <%= menu_item "Logout", logout_application_index_path %>
+          <% if student_signed_in? %>
+            <%= menu_item "Logout", destroy_student_session_path, method: :delete %>
+          <% elsif instructor_signed_in? %>
+            <%= menu_item "Logout", destroy_instructor_session_path, method: :delete %>
+          <% end %>
         <% end %>
 
       <% end %>
     <% end %>
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
     <%= yield %>
-
 </body>
 </html>

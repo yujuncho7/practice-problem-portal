@@ -1,17 +1,15 @@
 class ProblemsController < ApplicationController
 
   def index
+    if (!student_signed_in? and !instructor_signed_in?)
+      redirect_to new_student_session_path
+    end
     @search = Problem.search(params[:q])
     @problems = @search.result
   end
 
   def new
-    user = session[:user]
-    if !user.nil?
-      if user.is_instructor?
-        # automatically renders view template corresponding to new method
-      end
-    else
+    if !instructor_signed_in? 
       redirect_to problems_path
       flash[:notice] = "Permission Denied"
     end
