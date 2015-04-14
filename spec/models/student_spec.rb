@@ -3,17 +3,18 @@ require 'spec_helper'
 describe Student do
 
   before do
-    @user = Student.new(email: "test@gmail.com", password: "12345678", password_confirmation: "12345678")
+    @user_attr = Factory.attributes_for(:student)
+    @user = Factory(:student)
+#Student.create!(@user_attr)
   end
 
   subject { @user }
 
   it { should respond_to(:email) }
-  it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
-  it { should be_valid }
   it {should_not be_is_instructor }
+
 
   describe "when password is not present" do
       before { @user.password = @user.password_confirmation = " " }

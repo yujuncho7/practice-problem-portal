@@ -12,6 +12,8 @@ gem 'bcrypt-ruby'
 gem "codeclimate-test-reporter", group: :test, require: nil
 gem 'devise'
 gem 'mailcatcher'
+gem 'travis'
+gem 'factory_girl'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

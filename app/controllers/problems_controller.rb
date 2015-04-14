@@ -9,7 +9,7 @@ class ProblemsController < ApplicationController
   end
 
   def new
-    if !instructor_signed_in? 
+    if !instructor_signed_in?
       redirect_to problems_path
       flash[:notice] = "Permission Denied"
     end
@@ -28,11 +28,8 @@ class ProblemsController < ApplicationController
   end
 
   def edit
-    user = session[:user]
-    if !user.nil?
-      if user.is_instructor?
+    if instructor_signed_in?
         @problem = Problem.find params[:id]
-      end
     else
       flash[:notice] = "Permission Denied"
       redirect_to problems_path

@@ -2,11 +2,23 @@ require 'spec_helper'
 
 describe ProblemsController do
 
-  it 'should call database to get problems' do
+  it 'should call database to get problems if not signed in' do
     p = Problem.create
     get :index
-    expect(response).to render_template("index")
+    response.should redirect_to(new_student_session_path) 
   end
+
+  it 'should call database to get problems if signed in' do
+    instructor = FactoryGirl.create(:instructor)
+    instructor.confirm!
+    instructor.stub(:active?).and_return(true)
+    instructor.stub(:confirmed?).and_return(true)
+    sign_in instructor
+    p = Problem.create
+    get :index
+    response.should render_template("index")
+  end
+
 
   it "should show problem by id" do
     mock_problem = double('Problem')
@@ -14,9 +26,12 @@ describe ProblemsController do
     get :show, {:id => '1'}
   end
 
-  it "should show new problem template" do
-    test = Instructor.create(email:'test@gmail.com', password:'12345678', password_confirmation:'12345678')
-    session[:user] = test
+  it "should show new problem template if instructor" do
+    instructor = FactoryGirl.create(:instructor)
+    instructor.confirm!
+    instructor.stub(:active?).and_return(true)
+    instructor.stub(:confirmed?).and_return(true)
+    sign_in instructor
     post :new
     response.should render_template('new')
   end
@@ -27,9 +42,13 @@ describe ProblemsController do
   end
 
   it "should show edit page if instructor" do
-    test = Instructor.create(id:'1', email:'test@gmail.com', password:'12345678', password_confirmation:'12345678')
-    Problem.create(id:'1', title:'test')
-    session[:user] = test
+    mock_problem = double('Problem')
+    Problem.should_receive(:find).with('1').and_return(mock_problem)
+    instructor = FactoryGirl.create(:instructor)
+    instructor.confirm!
+    instructor.stub(:active?).and_return(true)
+    instructor.stub(:confirmed?).and_return(true)
+    sign_in instructor
     get :edit, { :id => '1' }
     response.should render_template('edit')
   end
