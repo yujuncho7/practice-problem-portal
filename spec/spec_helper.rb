@@ -1,7 +1,7 @@
 # Report code coverage
-require 'simplecov'
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
+require 'simplecov'
 SimpleCov.start 'rails'
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
@@ -15,6 +15,10 @@ require 'rspec/autorun'
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
+  config.include Devise::TestHelpers, type: :controller
+  config.before(:all) do
+    FactoryGirl.reload
+    end
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
