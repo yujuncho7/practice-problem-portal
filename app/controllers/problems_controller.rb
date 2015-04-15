@@ -6,6 +6,13 @@ class ProblemsController < ApplicationController
     end
     @search = Problem.search(params[:q])
     @problems = @search.result
+    if (student_signed_in?)
+      @completion_hash = current_student.completed_problems
+      if @completion_hash == nil
+        current_student.completed_problems = Hash.new
+        current_student.save
+      end
+    end
   end
 
   def new
@@ -18,6 +25,9 @@ class ProblemsController < ApplicationController
   def show
     id = params[:id]
     @problem = Problem.find(id)
+    if(student_signed_in?)
+      @completion_hash = current_student.completed_problems
+    end
     #will render app/views/problems/show.<extension> by default
   end
 
@@ -25,6 +35,18 @@ class ProblemsController < ApplicationController
     @problem = Problem.create!(params[:problem])
     flash[:notice] = "#{@problem.title} was successfully created."
     redirect_to problems_path #make sure this is the right route
+  end
+
+  def complete
+    @completion_hash = current_student.completed_problems
+    if (params[:complete] == "1")
+      @completion_hash[params[:problem]] = "Complete"
+    else
+      @completion_hash[params[:problem]] = "In Progress"
+    end
+    current_student.completed_problems = @completion_hash
+    current_student.save
+    redirect_to problems_path
   end
 
   def edit

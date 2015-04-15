@@ -5,6 +5,11 @@
       $("button").click(function(){
         $("#solution").toggle(500);
       });
+      <% if student_signed_in? %>
+        <% if !@completion_hash.has_key?(@problem.title) %>
+          <% @completion_hash[@problem.title] = "In Progress" %>
+        <% end %>
+      <% end %>
   });
   </script>
   <%= link_to problems_path, class: "btn btn-default" do %>
@@ -17,12 +22,21 @@
     </p>
   </div>
 
-  <% if session[:user].nil? %>
-    <!-- If not logged in, do not display anything for edit/delete. -->
-  <% else %>
-    <% if session[:user].is_instructor? %>
-      <%= button_to 'Edit', edit_problem_path(@problem), class: 'btn btn-warning btn-sm' %>
-      <%= button_to 'Delete', problem_path(@problem), class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: 'Are you sure you want to delete this problem?' } %>
+  <% if instructor_signed_in? %>
+    <%= link_to 'Edit', edit_problem_path(@problem), class: 'btn btn-warning btn-sm' %>
+    <%= button_to 'Delete', problem_path(@problem), class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: 'Are you sure you want to delete this problem?' } %>
+  <% end %>
+
+  <% if student_signed_in? %>
+    <%= form_tag complete_problem_path do %>
+      <div style="display: inline-block">
+        <%= check_box_tag :complete, 1, @completion_hash[@problem.title] == "Complete" %>
+        Complete?
+      </div>
+      <%= hidden_field_tag :problem, @problem.title %>
+      <p>
+      <p>
+      <%= submit_tag 'Save', class: "btn btn-success" %>
     <% end %>
   <% end %>
 
@@ -30,5 +44,4 @@
   <div style="background:#E3E3E3">
     <p id="solution"><%= @problem.solution %></p>
   </div>
-
 </div>

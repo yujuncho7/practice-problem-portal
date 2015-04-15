@@ -8,7 +8,11 @@ Practiceproblemportal::Application.routes.draw do
       sessions: "students/sessions"
   }
 
-  resources :problems
+  resources :problems do
+    member do
+     post 'complete', to: 'problems#complete'
+    end
+  end
 
   resources :application do
     collection do
