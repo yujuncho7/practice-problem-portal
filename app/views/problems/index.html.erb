@@ -12,6 +12,11 @@
             <tr>
                 <th class="problem-header" style="width: 60%">Title</th>
                 <th class="problem-header">Difficulty</th>
+                <% if @completion_hash != nil%>
+                  <% if @completion_hash.length >0 %>
+                    <th class="problem-header">Progress</th>
+                  <% end %>
+                <% end %>
             </tr>
           </thead>
           <tbody>
@@ -19,6 +24,11 @@
             <tr>
                 <td> <%= link_to "#{problem.title}", problem_path(problem) %> </td>
                 <td> <%= problem.difficulty %> </td>
+                <% if @completion_hash != nil%>
+                  <% if @completion_hash.length >0 %>
+                    <td><%= @completion_hash[problem.title] %></td>
+                  <% end %>
+                <% end %>
             </tr>
             <% end %>
           </tbody>

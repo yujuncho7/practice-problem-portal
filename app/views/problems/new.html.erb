@@ -1,3 +1,4 @@
+<div class="problem-editor">
 <h1>Create new problem</h1>
 <%= flash[:notice] %>
 <%= form_for :problem, url: problems_path do |p| %>
@@ -8,20 +9,21 @@
 
   <p>
     <%= p.label :difficulty %><br>
-    <%= p.text_field :difficulty %>
+    <%= p.select :difficulty, ["Hard", "Medium", "Easy"] %>
   </p>
 
   <p>
     <%= p.label :description %><br>
-    <%= p.text_area :description %>
+    <%= p.text_area :description, :size => "200x10"%>
   </p>
 
   <p>
     <%= p.label :solution %><br>
-    <%= p.text_area :solution %>
+    <%= p.text_area :solution, :size => "100x10" %>
   </p>
 
   <p>
-    <%= submit_tag 'Create Problem' %>
+    <%= submit_tag 'Create Problem', class: "btn btn-success" %>
   </p>
 <% end %>
+</div>

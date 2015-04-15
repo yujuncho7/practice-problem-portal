@@ -1,3 +1,4 @@
+<div class="problem-editor">
 <h1>Edit <%= @problem.title %></h1>
 
 
@@ -9,15 +10,21 @@
 
   <p>
     <%= p.label :difficulty %><br>
-    <%= p.text_field :difficulty %>
+    <%= p.select :difficulty, ["Hard", "Medium", "Easy"] %>
   </p>
 
   <p>
     <%= p.label :description %><br>
-    <%= p.text_field :description %>
+    <%= p.text_area :description, :size => "200x10"%>
   </p>
 
   <p>
-    <%= submit_tag 'Update Problem' %>
+    <%= p.label :solution %><br>
+    <%= p.text_area :solution, :size => "100x10" %>
+  </p>
+
+  <p>
+    <%= submit_tag 'Update Problem', class: "btn btn-warning" %>
   </p>
 <% end %>
+</div>

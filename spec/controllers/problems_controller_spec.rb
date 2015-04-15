@@ -19,8 +19,24 @@ describe ProblemsController do
     response.should render_template("index")
   end
 
+  it 'should create new completed problems hash if student signed in' do
+    student = FactoryGirl.create(:student)
+    student.confirm!
+    student.stub(:active?).and_return(true)
+    student.stub(:confirmed?).and_return(true)
+    sign_in student
+    get :index
+    response.should render_template("index")
+  end
+
+
 
   it "should show problem by id" do
+    student = FactoryGirl.create(:student)
+    student.confirm!
+    student.stub(:active?).and_return(true)
+    student.stub(:confirmed?).and_return(true)
+    sign_in student
     mock_problem = double('Problem')
     Problem.should_receive(:find).with('1').and_return(mock_problem)
     get :show, {:id => '1'}
@@ -77,6 +93,29 @@ describe ProblemsController do
     post :create, {:problem => mock_problem}
     response.should redirect_to(problems_path)
   end
+
+  it "should be possible to complete problem" do
+    student = FactoryGirl.create(:student)
+    student.confirm!
+    student.stub(:active?).and_return(true)
+    student.stub(:confirmed?).and_return(true)
+    student.stub(:completed_problems).and_return(Hash.new)
+    sign_in student
+    post :complete, { complete: "1", problem: "2sum", id: "1"}
+    response.should redirect_to(problems_path)
+  end
+
+  it "should be possible to complete problem" do
+    student = FactoryGirl.create(:student)
+    student.confirm!
+    student.stub(:active?).and_return(true)
+    student.stub(:confirmed?).and_return(true)
+    student.stub(:completed_problems).and_return(Hash.new)
+    sign_in student
+    post :complete, { complete: "0", problem: "2sum", id: "1"}
+    response.should redirect_to(problems_path)
+  end
+
 
   it "should be possible to update a problem" do
     mock_problem = double('Problem')
