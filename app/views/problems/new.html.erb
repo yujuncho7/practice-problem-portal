@@ -8,6 +8,11 @@
   </p>
 
   <p>
+    <%= p.label :tag_list, "Tags (seperated by commas)" %> <br/>
+    <%= p.text_field :tag_list %>
+  </p>
+
+  <p>
     <%= p.label :difficulty %><br>
     <%= p.select :difficulty, ["Hard", "Medium", "Easy"] %>
   </p>

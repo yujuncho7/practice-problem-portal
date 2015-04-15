@@ -22,3 +22,35 @@
   color: black;
   text-decoration: underline;
 }
+
+.outer-div {
+  width: 80%;
+  margin-right: auto;
+  margin-left:auto;
+}
+
+.inner-left-div {
+  float: left;
+}
+
+.inner-right-div {
+  float: right;
+  margin-top: 3%;
+}
+
+.background-color-tags {
+  background-color: #fcf8e3;
+}
+
+.background-color-fonts {
+  font-size: 125%;
+  color: #8a6db;
+}
+
+.float-right {
+  float: right;
+}
+
+.half-width {
+  width: 55%;
+}

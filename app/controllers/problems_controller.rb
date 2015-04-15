@@ -5,7 +5,12 @@ class ProblemsController < ApplicationController
       redirect_to new_student_session_path
     end
     @search = Problem.search(params[:q])
-    @problems = @search.result
+    # this is for tagging
+    if params[:tag]
+      @problems = Problem.tagged_with(params[:tag])
+    else
+      @problems = @search.result
+    end
     if (student_signed_in?)
       @completion_hash = current_student.completed_problems
       if @completion_hash == nil

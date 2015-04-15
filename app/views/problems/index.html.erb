@@ -1,6 +1,16 @@
 <html>
+    <script>
+      $(document).ready(function(){
+        $("tr[data-link]").click(function() {
+          window.location = this.dataset.link
+        });
+      });
+    </script>
     <body>
-      <div id = "problem-table">
+
+    <div class="outer-div">
+
+      <div class="inner-left-div" id = "problem-table">
           <div class="form-inline" align="right">
             <%= search_form_for @search do |f| %>
               <%= f.text_field :title_cont, class: 'form-control input-lg', placeholder: 'Search Problem', id:'search_problems' %>
@@ -10,13 +20,14 @@
         <table class="table table-striped" id='problems'>
           <thead>
             <tr>
-                <th class="problem-header" style="width: 60%">Title</th>
+                <th class="problem-header half-width">Title</th>
                 <th class="problem-header">Difficulty</th>
                 <% if @completion_hash != nil%>
                   <% if @completion_hash.length >0 %>
                     <th class="problem-header">Progress</th>
                   <% end %>
                 <% end %>
+                <th class="problem-header">Tags</th>
             </tr>
           </thead>
           <tbody>
@@ -29,11 +40,32 @@
                     <td><%= @completion_hash[problem.title] %></td>
                   <% end %>
                 <% end %>
+                <td> <%= raw problem.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %> </td>
             </tr>
             <% end %>
           </tbody>
         </table>
       </div>
+
+      <div class="inner-right-div col-lg-2 col-pull-3">
+        <table class="table-bordered table table-hover">
+          <thead>
+            <tr class="background-color-tags">
+              <th class="background-color-fonts"><span class="glyphicon glyphicon-tag"></span>Tags</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% Problem.tag_counts.each do |tag| %>
+            <tr data-link="<%= tag_path(tag.to_s) %>">
+              <td> <%= link_to tag, tag_path(tag.to_s) %> <span class="badge float-right"> <%= tag.taggings_count %> </span> </td>
+            </tr> 
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
     </body>
 </html>
 
