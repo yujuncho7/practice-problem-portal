@@ -8,6 +8,8 @@ Practiceproblemportal::Application.routes.draw do
       sessions: "students/sessions"
   }
 
+  get 'tags/:tag', to: 'problems#index', as: :tag
+
   resources :problems do
     member do
      post 'complete', to: 'problems#complete'

@@ -14,6 +14,10 @@ gem 'devise'
 gem 'mailcatcher'
 gem 'travis'
 gem 'factory_girl'
+
+# used for tagging
+gem 'acts-as-taggable-on'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
