@@ -12,6 +12,7 @@ gem "codeclimate-test-reporter", group: :test, require: nil
 gem 'devise'
 gem 'travis'
 gem 'factory_girl'
+gem 'therubyracer'
 
 # used for tagging
 gem 'acts-as-taggable-on'
