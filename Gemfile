@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 gem 'rails', '3.2.16'
 gem 'bcrypt', '~> 3.1.7'
-gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'ransack'
@@ -11,7 +10,6 @@ gem 'jquery-datatables-rails', github:'rweng/jquery-datatables-rails'
 gem 'bcrypt-ruby'
 gem "codeclimate-test-reporter", group: :test, require: nil
 gem 'devise'
-gem 'mailcatcher'
 gem 'travis'
 gem 'factory_girl'
 
@@ -27,6 +25,7 @@ group :development, :test do
   gem 'ruby-debug19'
   gem 'rspec-rails', '~>2.14.0'
   gem 'simplecov'
+  gem 'mailcatcher'
   gem 'database_cleaner'
 
   # Debugging Tools recommended by Sam
