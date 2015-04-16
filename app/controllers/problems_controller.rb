@@ -33,6 +33,8 @@ class ProblemsController < ApplicationController
     if(student_signed_in?)
       @completion_hash = current_student.completed_problems
     end
+    renderer = Redcarpet::Render::HTML.new(hard_wrawp: true, prettify: true)
+    @markdown = Redcarpet::Markdown.new(renderer, autolink: true, tables: true)
     #will render app/views/problems/show.<extension> by default
   end
 

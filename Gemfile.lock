@@ -201,6 +201,7 @@ GEM
       polyamorous (~> 1.1)
     rdoc (3.12.2)
       json (~> 1.4)
+    redcarpet (3.2.3)
     ref (1.0.5)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
@@ -314,6 +315,7 @@ DEPENDENCIES
   rails (= 3.2.16)
   rails_12factor
   ransack
+  redcarpet
   rspec-rails (~> 2.14.0)
   ruby-debug19
   sass-rails (~> 3.2.3)

@@ -13,12 +13,12 @@
   });
   </script>
   <%= link_to problems_path, class: "btn btn-default" do %>
-    <i class="glyphicon glyphicon-menu-left">Back</i>
+    <i class="glyphicon glyphicon-chevron-left" style="vertical-align:middle">Back</i>
   <% end %>
   <h2><%= @problem.title %></h2>
   <div id="question-content"
     <p>
-      <%= @problem.description %>
+      <%= @markdown.render(@problem.description).html_safe %>
     </p>
   </div>
 
@@ -41,7 +41,7 @@
   <% end %>
 
   <button class="btn btn-info btn-sm">Toggle Solution</button>
-  <div style="background:#E3E3E3">
-    <p id="solution"><%= @problem.solution %></p>
+  <div style="background:#E3E3E3" id="solution">
+    <p><%= @markdown.render(@problem.solution).html_safe %></p>
   </div>
 </div>
