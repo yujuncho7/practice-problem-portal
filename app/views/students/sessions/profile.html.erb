@@ -1,0 +1,58 @@
+
+<html>
+  <body>
+    <div id = "user-wrapper">
+      <div id = "user-problems-completed">
+        <h1> <%= @username %> </h1>
+        <div class = "filters-wrapper">
+          <ul class="filters-list">
+            <li class = "difficulty-filter"><a id = "total-filter">total</a></li>
+            <li class = "difficulty-filter"><a id = "easy-filter">easy</a></li>
+            <li class = "difficulty-filter"><a id = "medium-filter">medium</a></li>
+            <li class = "difficulty-filter"><a id = "hard-filter">hard</a></li>
+          </ul>
+        </div>
+        <div id="completion">
+          <span id="problems-count"></span>
+          <span id="checkmark"> &#10003; </span>
+        </div>
+        <div class = "filter-wrapper">
+        </div>
+      </div>
+    </div>
+    <%= javascript_tag do %>
+      function onClickHandlers() {
+        var problemsCount = <%= @problems.count %>;
+        $( "#problems-count" ).text(problemsCount);
+
+        $( "#all-filter" ).click(function( event ) {
+          problemsCount = <%= @problems.select { |name, details| details[:difficulty] == "all" }.count %>;
+          console.log("all")
+          $( "#problems-count" ).text(problemsCount);
+        });
+
+        $( "#easy-filter" ).click(function( event ) {
+          problemsCount = <%= @problems.select { |name, details| details[:difficulty] == "easy" }.count %>;
+          console.log("easy")
+          $( "#problems-count" ).text(problemsCount);
+        });
+
+        $( "#medium-filter" ).click(function( event ) {
+          problemsCount = <%= @problems.select { |name, details| details[:difficulty] == "medium" }.count %>;
+          console.log("medium")
+          $( "#problems-count" ).text(problemsCount);
+        });
+
+        $( "#hard-filter" ).click(function( event ) {
+          problemsCount = <%= @problems.select { |name, details| details[:difficulty] == "hard" }.count %>;
+          console.log("hard")
+          $( "#problems-count" ).text(problemsCount);
+        });
+      }
+
+      $( document ).ready(function() {
+        onClickHandlers();
+      });
+    <% end %>
+  </body>
+</html>
