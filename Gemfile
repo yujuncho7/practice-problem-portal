@@ -15,6 +15,7 @@ gem 'factory_girl'
 gem 'therubyracer'
 gem 'thin'
 gem 'actionmailer'
+gem 'redcarpet'
 
 # used for tagging
 gem 'acts-as-taggable-on'

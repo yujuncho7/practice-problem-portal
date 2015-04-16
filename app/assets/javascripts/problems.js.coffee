@@ -1,6 +1,7 @@
 jQuery ->
-  $('#problems').dataTable(
+  $('#problems-dt').dataTable(
       "paging": false,
       "bFilter": false,
-      "info": false
+      "info": false,
+      "bDestroy": true
   )
