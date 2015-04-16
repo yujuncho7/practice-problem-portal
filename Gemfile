@@ -14,6 +14,7 @@ gem 'travis'
 gem 'factory_girl'
 gem 'therubyracer'
 gem 'thin'
+gem 'actionmailer'
 
 # used for tagging
 gem 'acts-as-taggable-on'

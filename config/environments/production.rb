@@ -1,9 +1,6 @@
 Practiceproblemportal::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  # Mail
-  config.action_mailer.default_url_options = { host: 'practice-problem-portal.herokuapp.com' }
-
   # Code is not reloaded between requests
   config.cache_classes = true
 
