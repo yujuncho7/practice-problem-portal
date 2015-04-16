@@ -3,29 +3,18 @@
   <body>
     <div id = "user-wrapper">
       <div id = "user-problems-completed">
-        <h1> <%= @username %> <h1>
-        <h2>  COMPLETED <b id="problems-count"></b> PROBLEMS </h2>
+        <h1> <%= @username %> </h1>
         <div class = "filters-wrapper">
-          <a id = "all-filter">
-            <div class = "difficulty-filter">
-              all
-            </div>
-          </a>
-          <a id = "easy-filter">
-            <div class = "difficulty-filter">
-              easy
-            </div>
-          </a>
-          <a id = "medium-filter">
-            <div class = "difficulty-filter">
-              medium
-            </div>
-          </a>
-          <a id = "hard-filter">
-            <div class = "difficulty-filter">
-              hard
-            </div>
-          </a>
+          <ul class="filters-list">
+            <li class = "difficulty-filter"><a id = "total-filter">total</a></li>
+            <li class = "difficulty-filter"><a id = "easy-filter">easy</a></li>
+            <li class = "difficulty-filter"><a id = "medium-filter">medium</a></li>
+            <li class = "difficulty-filter"><a id = "hard-filter">hard</a></li>
+          </ul>
+        </div>
+        <div id="completion">
+          <span id="problems-count"></span>
+          <span id="checkmark"> &#10003; </span>
         </div>
         <div class = "filter-wrapper">
         </div>
