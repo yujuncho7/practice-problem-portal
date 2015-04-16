@@ -10,6 +10,10 @@ Practiceproblemportal::Application.routes.draw do
 
   get 'tags/:tag', to: 'problems#index', as: :tag
 
+  devise_scope :student do
+    get "students/:id" => "students/sessions#profile"
+  end
+
   resources :problems do
     member do
      post 'complete', to: 'problems#complete'

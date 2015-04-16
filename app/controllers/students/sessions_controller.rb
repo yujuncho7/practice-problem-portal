@@ -11,6 +11,16 @@ class Students::SessionsController < Devise::SessionsController
     super
   end
 
+  # GET /student/:id
+  def profile
+    @student = Student.find_by_id(params[:id])
+    if !((student_signed_in? and current_student == @student) or instructor_signed_in?)
+      flash[:notice] = "Try signing in if you have not already done so."
+      redirect_to new_student_session_path
+    end
+  end
+
+
   # DELETE /resource/sign_out
   # def destroy
   #   super
