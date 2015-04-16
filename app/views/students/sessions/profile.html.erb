@@ -1,1 +1,69 @@
-<h1> hi </h1>
+
+<html>
+  <body>
+    <div id = "user-wrapper">
+      <div id = "user-problems-completed">
+        <h1> <%= @username %> <h1>
+        <h2>  COMPLETED <b id="problems-count"></b> PROBLEMS </h2>
+        <div class = "filters-wrapper">
+          <a id = "all-filter">
+            <div class = "difficulty-filter">
+              all
+            </div>
+          </a>
+          <a id = "easy-filter">
+            <div class = "difficulty-filter">
+              easy
+            </div>
+          </a>
+          <a id = "medium-filter">
+            <div class = "difficulty-filter">
+              medium
+            </div>
+          </a>
+          <a id = "hard-filter">
+            <div class = "difficulty-filter">
+              hard
+            </div>
+          </a>
+        </div>
+        <div class = "filter-wrapper">
+        </div>
+      </div>
+    </div>
+    <%= javascript_tag do %>
+      function onClickHandlers() {
+        var problemsCount = <%= @problems.count %>;
+        $( "#problems-count" ).text(problemsCount);
+
+        $( "#all-filter" ).click(function( event ) {
+          problemsCount = <%= @problems.select { |name, details| details[:difficulty] == "all" }.count %>;
+          console.log("all")
+          $( "#problems-count" ).text(problemsCount);
+        });
+
+        $( "#easy-filter" ).click(function( event ) {
+          problemsCount = <%= @problems.select { |name, details| details[:difficulty] == "easy" }.count %>;
+          console.log("easy")
+          $( "#problems-count" ).text(problemsCount);
+        });
+
+        $( "#medium-filter" ).click(function( event ) {
+          problemsCount = <%= @problems.select { |name, details| details[:difficulty] == "medium" }.count %>;
+          console.log("medium")
+          $( "#problems-count" ).text(problemsCount);
+        });
+
+        $( "#hard-filter" ).click(function( event ) {
+          problemsCount = <%= @problems.select { |name, details| details[:difficulty] == "hard" }.count %>;
+          console.log("hard")
+          $( "#problems-count" ).text(problemsCount);
+        });
+      }
+
+      $( document ).ready(function() {
+        onClickHandlers();
+      });
+    <% end %>
+  </body>
+</html>
