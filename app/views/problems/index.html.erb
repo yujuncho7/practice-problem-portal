@@ -1,4 +1,5 @@
 <html>
+
     <script>
       $(document).ready(function(){
         $("tr[data-link]").click(function() {
@@ -49,10 +50,10 @@
 
       <% if Problem.tag_counts.size > 0 %>
         <div class="inner-right-div col-lg-2 col-pull-3">
-          <table class="table-bordered table table-hover">
+          <table class="table-bordered table table-hover top-border-change">
             <thead>
               <tr class="background-color-tags">
-                <th class="background-color-fonts"><span class="glyphicon glyphicon-tag" style="vertical-align:middle"></span>Tags</th>
+                <th class="background-color-fonts" style="border-bottom-width: 1px;"><span class="glyphicon glyphicon-tag" style="vertical-align:middle"></span>Tags</th>
               </tr>
             </thead>
             <tbody>
