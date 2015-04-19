@@ -1,11 +1,13 @@
 Practiceproblemportal::Application.routes.draw do
 
   devise_for :instructors, controllers: {
-    sessions: "instructors/sessions"
+    sessions: "instructors/sessions",
+    registrations: "instructors/registrations"
   }, path: "instructors", path_names: { sign_up: 'sign_up_only' }
 
   devise_for :students, controllers: {
-      sessions: "students/sessions"
+      sessions: "students/sessions",
+      registrations: "students/registrations"
   }
 
   get 'tags/:tag', to: 'problems#index', as: :tag
