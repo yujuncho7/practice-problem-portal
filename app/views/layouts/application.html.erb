@@ -16,6 +16,9 @@
         <% if instructor_signed_in? %>
           <%= menu_item "Create Problem", new_problem_path %>
         <% end %>
+        <% if student_signed_in? and false == true %>
+          <%= menu_item "Profile", student_profile_path(current_student) %>
+        <% end %>
       <% end %>
       <%= menu_group pull: :right do %>
 
