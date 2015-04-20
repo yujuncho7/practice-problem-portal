@@ -13,7 +13,7 @@ Practiceproblemportal::Application.routes.draw do
   get 'tags/:tag', to: 'problems#index', as: :tag
 
   devise_scope :student do
-    get "students/:id" => "students/sessions#profile"
+    get "students/:id" => "students/sessions#profile", as: :student_profile
   end
 
   resources :problems do
