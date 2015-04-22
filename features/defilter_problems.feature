@@ -23,11 +23,3 @@ Scenario: correctly defilters problems when one tag is selected
   And I follow 'Unfilter'
   Then I should see 'Alpha Test', 'Beta Test', 'Gamma Test', 'Delta Test'
 
-
-Scenario: correctly defilters problems when multiple tags are selected
-  Given I am on the problems page
-  And 'Trees' is selected
-  And 'Strings' is selected
-  And I follow 'Unfilter'
-  Then I should see 'Alpha Test', 'Beta Test', 'Gamma Test', 'Delta Test'
-
