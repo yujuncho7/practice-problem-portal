@@ -11,7 +11,7 @@ gem 'bcrypt-ruby'
 gem "codeclimate-test-reporter", group: :test, require: nil
 gem 'devise'
 gem 'travis'
-gem 'factory_girl'
+gem 'factory_girl_rails'
 gem 'therubyracer'
 gem 'thin'
 gem 'actionmailer'
