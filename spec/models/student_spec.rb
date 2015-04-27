@@ -3,8 +3,8 @@ require 'spec_helper'
 describe Student do
 
   before do
-    @user_attr = Factory.attributes_for(:student)
-    @user = Factory(:student)
+    @user_attr = FactoryGirl.attributes_for(:student)
+    @user = FactoryGirl.create(:student)
 #Student.create!(@user_attr)
   end
 
