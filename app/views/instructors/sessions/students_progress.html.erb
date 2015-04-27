@@ -1,0 +1,24 @@
+<html>
+    <body>
+      <div id = "problem-table">
+          <div class="form-inline" align="right">
+          </div>
+        <table class="table table-striped" id='problems'>
+          <thead>
+            <tr>
+                <th class="student-header" style="width: 60%">Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @students.each do |student| %>
+            <tr>
+                <td>  "#{student.title}" </td>
+                <!-- <td> <%= link_to "#{student.title}", student_path(student) %> </td> -->
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </body>
+</html>
+

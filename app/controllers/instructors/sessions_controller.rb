@@ -11,6 +11,10 @@ class Instructors::SessionsController < Devise::SessionsController
     super
   end
 
+  def students_progress
+    @students = Student.all
+  end
+
   # DELETE /resource/sign_out
   # def destroy
   #   super

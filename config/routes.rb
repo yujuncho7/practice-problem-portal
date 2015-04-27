@@ -5,6 +5,10 @@ Practiceproblemportal::Application.routes.draw do
     registrations: "instructors/registrations"
   }, path: "instructors", path_names: { sign_up: 'sign_up_only' }
 
+  devise_scope :instructor do
+    get 'students_progress' => 'instructors/sessions#students_progress'
+  end
+
   devise_for :students, controllers: {
       sessions: "students/sessions",
       registrations: "students/registrations"
