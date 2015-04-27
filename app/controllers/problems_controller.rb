@@ -28,6 +28,7 @@ class ProblemsController < ApplicationController
   end
 
   def show
+    require 'coderay'
     id = params[:id]
     @problem = Problem.find(id)
     if(student_signed_in?)
