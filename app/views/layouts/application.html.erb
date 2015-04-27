@@ -11,7 +11,7 @@
 <body>
     <%= nav_bar fixed: :top do %>
       <%= menu_group do %>
-        <%= menu_item "CS61A Pratice Portal", root_path %>
+        <%= menu_item "CS61A Practice Portal", root_path %>
         <%= menu_item "Problems", problems_path %>
         <% if instructor_signed_in? %>
           <%= menu_item "Create Problem", new_problem_path %>
