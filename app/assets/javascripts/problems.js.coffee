@@ -4,4 +4,5 @@ jQuery ->
       "bFilter": false,
       "info": false,
       "bDestroy": true
-  )
+  );
+
