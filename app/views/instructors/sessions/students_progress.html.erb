@@ -6,13 +6,12 @@
         <table class="table table-striped" id='problems'>
           <thead>
             <tr>
-                <th class="student-header" style="width: 60%">Name</th>
+                <th class="student-header" style="width: 60%">Email</th>
             </tr>
           </thead>
           <tbody>
             <% @students.each do |student| %>
             <tr>
-                <!-- <td>  "#{student.email}" </td> -->
               <td> <%= link_to "#{student.email}", student_profile_path(student) %> </td> 
             </tr>
             <% end %>
