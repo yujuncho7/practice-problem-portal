@@ -12,8 +12,8 @@
           <tbody>
             <% @students.each do |student| %>
             <tr>
-                <td>  "#{student.title}" </td>
-                <!-- <td> <%= link_to "#{student.title}", student_path(student) %> </td> -->
+                <!-- <td>  "#{student.email}" </td> -->
+              <td> <%= link_to "#{student.email}", student_profile_path(student) %> </td> 
             </tr>
             <% end %>
           </tbody>
