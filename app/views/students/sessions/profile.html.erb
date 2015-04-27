@@ -22,31 +22,22 @@
     </div>
     <%= javascript_tag do %>
       function onClickHandlers() {
-        var problemsCount = <%= @problems.count %>;
-        $( "#problems-count" ).text(problemsCount);
+        $( "#problems-count" ).text(<%= @counts["All"] %>);
 
-        $( "#all-filter" ).click(function( event ) {
-          problemsCount = <%= @problems.select { |name, details| details[:difficulty] == "all" }.count %>;
-          console.log("all")
-          $( "#problems-count" ).text(problemsCount);
+        $( "#total-filter" ).click(function( event ) {
+          $( "#problems-count" ).text(<%= @counts["All"] %>);
         });
 
         $( "#easy-filter" ).click(function( event ) {
-          problemsCount = <%= @problems.select { |name, details| details[:difficulty] == "easy" }.count %>;
-          console.log("easy")
-          $( "#problems-count" ).text(problemsCount);
+          $( "#problems-count" ).text(<%= @counts["Easy"] %>);
         });
 
         $( "#medium-filter" ).click(function( event ) {
-          problemsCount = <%= @problems.select { |name, details| details[:difficulty] == "medium" }.count %>;
-          console.log("medium")
-          $( "#problems-count" ).text(problemsCount);
+          $( "#problems-count" ).text(<%= @counts["Medium"] %>);
         });
 
         $( "#hard-filter" ).click(function( event ) {
-          problemsCount = <%= @problems.select { |name, details| details[:difficulty] == "hard" }.count %>;
-          console.log("hard")
-          $( "#problems-count" ).text(problemsCount);
+          $( "#problems-count" ).text(<%= @counts["Hard"] %>);
         });
       }
 

@@ -18,9 +18,15 @@ class Students::SessionsController < Devise::SessionsController
       flash[:notice] = "Try signing in if you have not already done so."
       redirect_to new_student_session_path
     else
-      @problems = {}
+      @counts = { "All" => 0, "Easy" => 0, "Medium" => 0, "Hard" => 0 }
       if @student.completed_problems
-        @problems = @student.completed_problems
+        problem_titles = @student.completed_problems.keys
+        problems = Problem.where(title: problem_titles)
+        problems.each do |p|
+          @counts[p.difficulty] = @counts[p.difficulty] + 1
+          @counts["All"] = @counts["All"] + 1
+        end
+        Rails.logger.debug("My object: #{@counts.inspect}")
       end
       @username = @student.email.split("@")[0].upcase
     end

@@ -18,7 +18,7 @@
           <%= menu_item "Create Problem", new_problem_path %>
           <%= menu_item "View Students", students_progress_path %>
         <% end %>
-        <% if student_signed_in? and false == true %>
+        <% if student_signed_in?%>
           <%= menu_item "Profile", student_profile_path(current_student) %>
         <% end %>
       <% end %>
