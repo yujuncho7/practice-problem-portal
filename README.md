@@ -32,6 +32,8 @@ Run `rails server` and enjoy your practice problem portal!
 3. Controller
   * Problems can only be created and modified by Instructors
   * Problems can be viewed and completed by Students
+
+
 ## Students
 1. Model
   * Email and a hash of completed problems
@@ -40,6 +42,8 @@ Run `rails server` and enjoy your practice problem portal!
 3. Controller
   * Can complete problems after checkmarking completed and hitting save
   * Signup from devise
+
+
 ## Instructors
 1. Model
   * Email
