@@ -26,28 +26,28 @@ Run `rails server` and enjoy your practice problem portal!
 
 ## Problems
 1. Model
-..* Title, Tags, Difficulty, Description, Solution
+  * Title, Tags, Difficulty, Description, Solution
 2. View
-..* Index and show
+  * Index and show
 3. Controller
-..* Problems can only be created and modified by Instructors
-..* Problems can be viewed and completed by Students
+  * Problems can only be created and modified by Instructors
+  * Problems can be viewed and completed by Students
 ## Students
 1. Model
-..* Email and a hash of completed_problems
+  * Email and a hash of completed problems
 2. View
-..* Can view profile page to see current progress on problems
+  * Can view profile page to see current progress on problems
 3. Controller
-..* Can complete problems after checkmarking completed and hitting save
-..* Signup from devise
+  * Can complete problems after checkmarking completed and hitting save
+  * Signup from devise
 ## Instructors
 1. Model
-..* Email
+  * Email
 2. View
-..* Can create or modify problems
-..* Can view list of all students as well as their progress
+  * Can create or modify problems
+  * Can view list of all students as well as their progress
 3. Controller
-..* Signup from devise
+  * Signup from devise
 
 # Testing
 ## Rspec
